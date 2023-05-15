@@ -1,12 +1,17 @@
 import React from 'react';
 
-function WeatherDisplay({ weather }) {
-  return (
-    <div>
-      <h2>{weather.name}</h2>
-      <p>{Math.round(weather.main.temp - 273.15)}°C</p>
-    </div>
-  );
+class WeatherDisplay extends React.Component {
+  render() {
+    if (!this.props.temperature && !this.props.city) {
+      return <div>Enter a city to see the weather</div>;
+    }
+
+    return (
+      <div className="WeatherDisplay">
+        <h1>The current temperature in {this.props.city} is {this.props.temperature}°C</h1>
+      </div>
+    );
+  }
 }
 
 export default WeatherDisplay;
