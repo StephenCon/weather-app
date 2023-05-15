@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import WeatherDisplay from './components/WeatherDisplay/WeatherDisplay';
+import './App.css';
 
 class App extends React.Component {
   constructor(props) {
@@ -38,7 +39,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App d-flex justify-content-center align-items-center vh-100">
-        <div className="text-center">
+        <div className="content text-center w-25 h-25 p-4 rounded">
           <SearchBar onSearch={this.handleSearch} />
           <WeatherDisplay city={this.state.city} temperature={this.state.temperature} />
         </div>

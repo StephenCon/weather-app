@@ -8,7 +8,7 @@ class WeatherDisplay extends React.Component {
 
     return (
       <div className="WeatherDisplay">
-        <h1 className="text-center">The current temperature in {this.props.city} is {this.props.temperature}°C</h1>
+        <h2 className="text-center">The current temperature in {this.props.city} is {this.props.temperature}°C</h2>
       </div>
     );
   }
