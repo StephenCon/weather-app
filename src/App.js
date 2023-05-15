@@ -37,9 +37,11 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <SearchBar onSearch={this.handleSearch} />
-        <WeatherDisplay city={this.state.city} temperature={this.state.temperature} />
+      <div className="App d-flex justify-content-center align-items-center vh-100">
+        <div className="text-center">
+          <SearchBar onSearch={this.handleSearch} />
+          <WeatherDisplay city={this.state.city} temperature={this.state.temperature} />
+        </div>
       </div>
     );
   }
