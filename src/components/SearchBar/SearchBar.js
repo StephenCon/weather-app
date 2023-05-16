@@ -1,3 +1,4 @@
+// Importing necessary libraries and components
 import React from 'react';
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -5,60 +6,82 @@ import PlacesAutocomplete, {
 } from 'react-places-autocomplete';
 import './SearchBar.css';
 
+// Defining a SearchBar component that extends the base React Component class
 class SearchBar extends React.Component {
+  // Constructor method for the SearchBar component
   constructor(props) {
     super(props);
-    this.state = { term: '' }; // Initializing the component state with an empty term
+    // Initializing the component's state with an empty term
+    this.state = { term: '' };
   }
 
+  // Method to handle changes in the search bar input
   handleChange = (term) => {
-    this.setState({ term }); // Update the term in the component state when the input value changes
+    // Update the term in the component's state to reflect the current input value
+    this.setState({ term });
   };
 
+  // Method to handle the selection of an address from the autocomplete dropdown
   handleSelect = (term) => {
-    geocodeByAddress(term) // Geocode the selected address
-      .then(results => getLatLng(results[0])) // Get the latitude and longitude from the geocoded results
-      .then(latLng => console.log('Success', latLng)) // Log the latitude and longitude to the console
-      .catch(error => console.error('Error', error)); // Log any errors that occur during geocoding
+    // Geocode the selected address
+    geocodeByAddress(term)
+      // Extract the latitude and longitude from the first result returned by the geocoder
+      .then(results => getLatLng(results[0]))
+      // Log the latitude and longitude to the console
+      .then(latLng => console.log('Success', latLng))
+      // Log any errors that occur during the geocoding process
+      .catch(error => console.error('Error', error));
 
-    this.props.onSearch(term); // Call the onSearch function passed as a prop with the selected address
+    // Call the onSearch method passed in as a prop, passing it the selected address
+    this.props.onSearch(term);
   };
 
+  // Render method to define what the SearchBar component should render
   render() {
+    // Return the JSX to be rendered
     return (
       <div className="SearchBar">
         <div className="autocomplete-container">
           <PlacesAutocomplete
-            value={this.state.term} // Set the value of the input field to the current term in the component state
-            onChange={this.handleChange} // Handle changes in the input field
-            onSelect={this.handleSelect} // Handle selection of an address from the autocomplete dropdown
+            value={this.state.term} // Set the value of the input field to the current term in the component's state
+            onChange={this.handleChange} // Call the handleChange method when the input value changes
+            onSelect={this.handleSelect} // Call the handleSelect method when an address is selected
           >
+            {/* Render function that returns JSX for the autocomplete dropdown */}
             {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
               <div>
                 <div className="autocomplete-dropdown-container">
-                  {loading && <div>Loading...</div>} {/* Show a loading message while suggestions are being fetched */}
+                  {/* Display a loading message while suggestions are being fetched */}
+                  {loading && <div>Loading...</div>}
+                  {/* Map over the array of suggestions */}
                   {suggestions.map(suggestion => {
+                    // Determine the CSS class for the suggestion item based on whether it is the currently active suggestion
                     const className = suggestion.active
-                      ? 'suggestion-item--active' // Apply a CSS class to the active suggestion item
+                      ? 'suggestion-item--active'
                       : 'suggestion-item';
+                    // Determine the CSS styles for the suggestion item based on whether it is the currently active suggestion
                     const style = suggestion.active
-                      ? { backgroundColor: '#fafafa', cursor: 'pointer' } // Apply a different background color to the active suggestion item
+                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
                       : { backgroundColor: '#ffffff', cursor: 'pointer' };
                     return (
+                      // Render a suggestion item
                       <div
                         {...getSuggestionItemProps(suggestion, {
                           className,
                           style,
                         })}
                       >
-                        <span>{suggestion.description}</span> {/* Display the suggestion description */}
+                        {/* Display the description of the suggestion */}
+                        <span>{suggestion.description}</span>
                       </div>
                     );
                   })}
                 </div>
                 <input
                   {...getInputProps({
-                    placeholder: 'Enter city name...', // Set the placeholder text for the input field
+                    // Set the placeholder text for the input field
+                    placeholder: 'Enter city name...',
+                    // Set the CSS class for the input field
                     className: 'form-control',
                   })}
                 />
@@ -71,4 +94,5 @@ class SearchBar extends React.Component {
   }
 }
 
+// Export the SearchBar component so it can be imported and used in other components
 export default SearchBar;
