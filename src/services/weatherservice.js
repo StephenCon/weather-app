@@ -1,4 +1,3 @@
-// weatherService.js
 const API_KEY = 'f023d6d413541c55d2f6cbcb018522e8'; // Replace with your API key
 
 export const fetchWeather = (city) => {

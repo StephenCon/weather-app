@@ -20,7 +20,7 @@ class SearchBar extends React.Component {
       .then(results => getLatLng(results[0])) // Get the latitude and longitude from the geocoded results
       .then(latLng => console.log('Success', latLng)) // Log the latitude and longitude to the console
       .catch(error => console.error('Error', error)); // Log any errors that occur during geocoding
-    this.setState({ term }); // Update the term in the component state with the selected address
+
     this.props.onSearch(term); // Call the onSearch function passed as a prop with the selected address
   };
 
@@ -65,9 +65,6 @@ class SearchBar extends React.Component {
               </div>
             )}
           </PlacesAutocomplete>
-        </div>
-        <div className="input-group-append">
-          <button type="submit" className="btn btn-primary">Search</button> {/* Render a search button */}
         </div>
       </div>
     );
