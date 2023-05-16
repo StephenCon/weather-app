@@ -1,43 +1,71 @@
 import React from 'react';
-const google = window.google;
+import PlacesAutocomplete, {
+  geocodeByAddress,
+  getLatLng,
+} from 'react-places-autocomplete';
 
 class SearchBar extends React.Component {
   constructor(props) {
     super(props);
-    this.searchInputRef = React.createRef();
     this.state = { term: '' };
   }
 
-  componentDidMount() {
-    this.searchAutocomplete = new google.maps.places.Autocomplete(this.searchInputRef.current);
+  handleChange = (term) => {
+    this.setState({ term });
+  };
 
-    this.searchAutocomplete.addListener('place_changed', () => {
-      const place = this.searchAutocomplete.getPlace();
-      this.setState({ term: place.name });
-    });
-  }
-
-  onFormSubmit = (event) => {
-    event.preventDefault();
-    this.props.onSearch(this.state.term);
-  }
+  handleSelect = (term) => {
+    geocodeByAddress(term)
+      .then(results => getLatLng(results[0]))
+      .then(latLng => console.log('Success', latLng))
+      .catch(error => console.error('Error', error));
+    this.setState({ term });
+    this.props.onSearch(term);
+  };
 
   render() {
     return (
       <div className="SearchBar">
-        <form onSubmit={this.onFormSubmit} className="input-group mb-3">
-          <input 
-            ref={this.searchInputRef}
-            type="text"
-            value={this.state.term}
-            onChange={e => this.setState({ term: e.target.value })}
-            placeholder="Enter city name..."
-            className="form-control"
-          />
-          <div className="input-group-append">
-            <button type="submit" className="btn btn-primary">Search</button>
-          </div>
-        </form>
+        <PlacesAutocomplete
+          value={this.state.term}
+          onChange={this.handleChange}
+          onSelect={this.handleSelect}
+        >
+          {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            <div>
+              <input
+                {...getInputProps({
+                  placeholder: 'Enter city name...',
+                  className: 'form-control',
+                })}
+              />
+              <div className="autocomplete-dropdown-container">
+                {loading && <div>Loading...</div>}
+                {suggestions.map(suggestion => {
+                  const className = suggestion.active
+                    ? 'suggestion-item--active'
+                    : 'suggestion-item';
+                  const style = suggestion.active
+                    ? { backgroundColor: '#fafafa', cursor: 'pointer' }
+                    : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                  return (
+                    <div
+                      {...getSuggestionItemProps(suggestion, {
+                        className,
+                        style,
+                      })}
+                    >
+                      <span>{suggestion.description}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </PlacesAutocomplete>
+        <div className="input-group-append">
+          <button type="submit" className="btn btn-primary">Search</button>
+        </div>
       </div>
     );
   }
