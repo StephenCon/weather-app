@@ -26,8 +26,8 @@ class App extends React.Component {
   // Rendering the application's main components
   render() {
     return (
-      <div className="App d-flex justify-content-center align-items-center vh-100">
-        <div className="content text-center w-25 h-25 p-4 rounded">
+      <div className="App d-flex justify-content-center align-items-center vh-100 vw-100">
+        <div className="content text-center w-25 h-50 p-4 rounded">
           {/* SearchBar allows users to search for a city */}
           <SearchBar onSearch={this.handleSearch} />
           {/* WeatherContainer displays the weather for the current city in the state */}
