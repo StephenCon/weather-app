@@ -1,41 +1,43 @@
-// Importing necessary libraries and components
 import React from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import WeatherContainer from './components/WeatherContainer/WeatherContainer';
+import DefaultWeather from './components/DefaultWeatherHandler/DefaultWeatherHandler';
 import './App.css';
 
-// Defining a class-based component, App, that extends the base React Component class
 class App extends React.Component {
-  // Constructor method for the App component
   constructor(props) {
     super(props);
-    // Initializing the component's state with an empty city
+    // The state stores the city name
     this.state = {
       city: ""
     };
   }
 
-  // Method to handle the search event from the SearchBar component
-  handleSearch = (city) => {
-    // Update the city in the component's state to the city entered in the SearchBar
+  // This method updates the state when the location is determined
+  handleLocationDetermined = (city) => {
     this.setState({ city });
   }
 
-  // Render method to define what the App component should render
+  // This method updates the state when a city is searched
+  handleSearch = (city) => {
+    this.setState({ city });
+  }
+
+  // Rendering the application's main components
   render() {
     return (
-      // JSX to be rendered by the App component
       <div className="App d-flex justify-content-center align-items-center vh-100">
         <div className="content text-center w-25 h-25 p-4 rounded">
-          {/* Render the SearchBar component, passing it the handleSearch method as a prop */}
+          {/* SearchBar allows users to search for a city */}
           <SearchBar onSearch={this.handleSearch} />
-          {/* Render the WeatherContainer component, passing it the current city as a prop */}
+          {/* WeatherContainer displays the weather for the current city in the state */}
           <WeatherContainer city={this.state.city} />
         </div>
+        {/* DefaultWeather determines the default location when the application starts */}
+        <DefaultWeather onLocationDetermined={this.handleLocationDetermined} />
       </div>
     );
   }
 }
 
-// Exporting the App component so it can be imported and used in other components
 export default App;
