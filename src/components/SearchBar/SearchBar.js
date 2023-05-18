@@ -1,10 +1,10 @@
 // Import the necessary libraries and components
-import React from 'react';
+import React from "react";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng,
-} from 'react-places-autocomplete';
-import './SearchBar.css';
+} from "react-places-autocomplete";
+import "./SearchBar.css";
 
 // Define a class component called SearchBar
 class SearchBar extends React.Component {
@@ -12,7 +12,7 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     // Initialize the state with a term property set to an empty string
-    this.state = { term: '' };
+    this.state = { term: "" };
   }
 
   // Define a method to handle changes in the input field
@@ -27,9 +27,9 @@ class SearchBar extends React.Component {
     const cityName = term.split(/[-,]/)[0].trim();
     // Geocode the selected address to get its coordinates
     geocodeByAddress(term)
-      .then(results => getLatLng(results[0])) // Extract the latitude and longitude from the geocoding result
-      .then(latLng => console.log('Success', latLng)) // Log the latitude and longitude to the console
-      .catch(error => console.error('Error', error)); // Log any errors that occurred during geocoding
+      .then((results) => getLatLng(results[0])) // Extract the latitude and longitude from the geocoding result
+      .then((latLng) => console.log("Success", latLng)) // Log the latitude and longitude to the console
+      .catch((error) => console.error("Error", error)); // Log any errors that occurred during geocoding
 
     // Call the onSearch method passed as a prop to this component with the selected address
     this.props.onSearch(cityName);
@@ -39,8 +39,8 @@ class SearchBar extends React.Component {
   render() {
     // Define search options to restrict the autocomplete suggestions to cities
     const searchOptions = {
-      types: ['(cities)']
-    }
+      types: ["(cities)"],
+    };
 
     // Return the JSX to be rendered by the component
     return (
@@ -53,21 +53,26 @@ class SearchBar extends React.Component {
             searchOptions={searchOptions} // Apply the search options to the autocomplete
           >
             {/* Define a render prop function to customize the rendering of the autocomplete dropdown */}
-            {({ getInputProps, suggestions, getSuggestionItemProps, loading }) => (
+            {({
+              getInputProps,
+              suggestions,
+              getSuggestionItemProps,
+              loading,
+            }) => (
               <div>
                 <div className="autocomplete-dropdown-container">
                   {/* Display a loading message while suggestions are being fetched */}
                   {loading && <div>Loading...</div>}
                   {/* Map over the array of suggestions to render each one */}
-                  {suggestions.map(suggestion => {
+                  {suggestions.map((suggestion) => {
                     // Determine the CSS class for the suggestion item based on whether it is currently active
                     const className = suggestion.active
-                      ? 'suggestion-item--active'
-                      : 'suggestion-item';
+                      ? "suggestion-item--active"
+                      : "suggestion-item";
                     // Determine the CSS styles for the suggestion item based on whether it is currently active
                     const style = suggestion.active
-                      ? { backgroundColor: '#fafafa', cursor: 'pointer' }
-                      : { backgroundColor: '#ffffff', cursor: 'pointer' };
+                      ? { backgroundColor: "#fafafa", cursor: "pointer" }
+                      : { backgroundColor: "#ffffff", cursor: "pointer" };
                     // Render the suggestion item
                     return (
                       <div
@@ -85,8 +90,8 @@ class SearchBar extends React.Component {
                 {/* Render the input field with the appropriate props */}
                 <input
                   {...getInputProps({
-                    placeholder: 'Enter city name...', // Set the placeholder for the input field
-                    className: 'form-control', // Set the CSS class for the input field
+                    placeholder: "Enter city name...", // Set the placeholder for the input field
+                    className: "form-control", // Set the CSS class for the input field
                   })}
                 />
               </div>
