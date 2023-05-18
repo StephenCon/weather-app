@@ -1,8 +1,9 @@
 import React from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
-import WeatherContainer from './components/WeatherContainer/WeatherContainer';
+import FetchWeather from './components/FetchWeather/FetchWeather';
 import DefaultWeather from './components/DefaultWeatherHandler/DefaultWeatherHandler';
 import './App.css';
+import IconDisplay from './components/IconDisplay/IconDisplay';
 
 class App extends React.Component {
   constructor(props) {
@@ -30,8 +31,8 @@ class App extends React.Component {
         <div className="content text-center w-25 h-50 p-4 rounded">
           {/* SearchBar allows users to search for a city */}
           <SearchBar onSearch={this.handleSearch} />
-          {/* WeatherContainer displays the weather for the current city in the state */}
-          <WeatherContainer city={this.state.city} />
+          {/* FetchWeather displays the weather for the current city in the state */}
+          <FetchWeather city={this.state.city} />
         </div>
         {/* DefaultWeather determines the default location when the application starts */}
         <DefaultWeather onLocationDetermined={this.handleLocationDetermined} />
