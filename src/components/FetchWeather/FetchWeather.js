@@ -1,16 +1,16 @@
 // Importing necessary libraries and components
-import React from 'react';
-import WeatherDisplay from '../WeatherDisplay/WeatherDisplay';
-import { fetchWeather } from '../../services/weatherservice';
+import React from "react";
+import WeatherDisplay from "../WeatherDisplay/WeatherDisplay";
+import { fetchWeather } from "../../services/weatherservice";
 
-// Defining a class-based component, WeatherContainer, that extends the base React Component class
+// Defining a class-based component, FetchWeather, that extends the base React Component class
 class FeathWeather extends React.Component {
   // Constructor method for the WeatherContainer component
   constructor(props) {
     super(props);
     // Initializing the component's state with an empty temperature
     this.state = {
-      temperature: ""
+      temperature: "",
     };
   }
 
@@ -28,17 +28,22 @@ class FeathWeather extends React.Component {
     // Calling the fetchWeather function imported from the weatherservice module
     fetchWeather(this.props.city)
       // When the promise resolves, updating the component's state with the new temperature
-      .then(data => {
+      .then((data) => {
         this.setState({
-          temperature: data.temperature
+          temperature: data.temperature,
         });
       });
-  }
+  };
 
   // Render method to define what the WeatherContainer component should render
   render() {
     // Render the WeatherDisplay component, passing it the current city and temperature as props
-    return <WeatherDisplay city={this.props.city} temperature={this.state.temperature} />;
+    return (
+      <WeatherDisplay
+        city={this.props.city}
+        temperature={this.state.temperature}
+      />
+    );
   }
 }
 
