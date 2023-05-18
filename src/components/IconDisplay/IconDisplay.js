@@ -53,11 +53,13 @@ function IconDisplay({ city }) {
   return (
     weather && (
       <img
-        src={`http://openweathermap.org/img/wn/${weather}.png`}
+        className="weather-icon"
+        src={`http://openweathermap.org/img/wn/${weather}@2x.png`}
         alt="Weather Icon"
       />
     )
   );
+
 }
 
 // Export the IconDisplay component as the default export.
