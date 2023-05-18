@@ -29,11 +29,11 @@ function IconDisplay({ city }) {
     }
 
     return (
-        <img 
+        weather && <img 
             src={`http://openweathermap.org/img/wn/${weather}.png`} 
             alt="Weather Icon" 
         />
-    );
+    );    
 }
 
 export default IconDisplay;
