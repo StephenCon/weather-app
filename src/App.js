@@ -1,11 +1,14 @@
+// Import necessary modules and components
 import React from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import FetchWeather from "./components/FetchWeather/FetchWeather";
 import DefaultLocation from "./components/DefaultLocationHandler/DefaultLocationHandler";
-import "./App.css";
 import IconDisplay from "./components/IconDisplay/IconDisplay";
+import "./App.css";
 
+// Main Application component
 class App extends React.Component {
+  // Constructor for the App component, initializes the state
   constructor(props) {
     super(props);
     // The state stores the city name
@@ -14,12 +17,14 @@ class App extends React.Component {
     };
   }
 
-  // This method updates the state when the location is determined
+  // This method updates the state when the location is determined by DefaultLocation component
+  // It is triggered when the DefaultLocation component gets the location of the user
   handleLocationDetermined = (city) => {
     this.setState({ city });
   };
 
-  // This method updates the state when a city is searched
+  // This method updates the state when a city is searched from the SearchBar
+  // It is triggered when the user performs a search in the SearchBar component
   handleSearch = (city) => {
     this.setState({ city });
   };
@@ -29,17 +34,19 @@ class App extends React.Component {
     return (
       <div className="App d-flex justify-content-center align-items-center vh-100 vw-100">
         <div className="content text-center w-25 h-50 p-4 rounded">
-          {/* SearchBar allows users to search for a city */}
+          {/* SearchBar allows users to search for a city, the 'onSearch' prop is set to the 'handleSearch' method */}
           <SearchBar onSearch={this.handleSearch} />
-          {/* FetchWeather displays the weather for the current city in the state */}
+          {/* FetchWeather displays the weather for the current city in the state. The 'city' prop is set to the 'city' in the state */}
           <FetchWeather city={this.state.city} />
+          {/* IconDisplay displays the weather icon for the current city in the state. The 'city' prop is set to the 'city' in the state */}
           <IconDisplay city={this.state.city} />
         </div>
-        {/* DefaultWeather determines the default location when the application starts */}
+        {/* DefaultLocation determines the default location when the application starts. The 'onLocationDetermined' prop is set to the 'handleLocationDetermined' method */}
         <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
       </div>
     );
   }
 }
 
+// Export the App component for use in other parts of your application
 export default App;
