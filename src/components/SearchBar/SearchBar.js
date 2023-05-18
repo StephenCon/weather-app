@@ -21,17 +21,17 @@ class SearchBar extends React.Component {
     this.setState({ term });
   };
 
-  // Define a method to handle the selection of an address from the autocomplete dropdown
+  // Define a method to handle the selection of an city from the autocomplete dropdown
   handleSelect = (term) => {
     // Split the term by the "-" or "," character and take the first part
     const cityName = term.split(/[-,]/)[0].trim();
-    // Geocode the selected address to get its coordinates
+    // Geocode the selected city to get its coordinates
     geocodeByAddress(term)
       .then((results) => getLatLng(results[0])) // Extract the latitude and longitude from the geocoding result
       .then((latLng) => console.log("Success", latLng)) // Log the latitude and longitude to the console
       .catch((error) => console.error("Error", error)); // Log any errors that occurred during geocoding
 
-    // Call the onSearch method passed as a prop to this component with the selected address
+    // Call the onSearch method passed as a prop to this component with the selected city
     this.props.onSearch(cityName);
   };
 
@@ -49,7 +49,7 @@ class SearchBar extends React.Component {
           <PlacesAutocomplete
             value={this.state.term} // Set the value of the input field to the current term in the state
             onChange={this.handleChange} // Call the handleChange method when the input value changes
-            onSelect={this.handleSelect} // Call the handleSelect method when an address is selected from the dropdown
+            onSelect={this.handleSelect} // Call the handleSelect method when an city is selected from the dropdown
             searchOptions={searchOptions} // Apply the search options to the autocomplete
           >
             {/* Define a render prop function to customize the rendering of the autocomplete dropdown */}
