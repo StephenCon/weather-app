@@ -10,10 +10,14 @@ const WeatherDisplay = ({ city, temperature }) => {
   // and converts the second part to uppercase. 
   // It then joins these parts back together with a comma and returns the resulting string.
   const formatCity = (str) => {
-    const parts = str.split(','); // Split the string on the comma
-    const formattedParts = [parts[0].trim(), parts[1].trim().toUpperCase()]; // Trim white spaces from the parts and convert the second part to uppercase
-    return formattedParts.join(', '); // Join the parts back together with a comma and return
-  };
+    const parts = str.split(','); // Split on comma
+    if (parts[1]) { // Check if the second part exists
+        const formattedParts = [parts[0].trim(), parts[1].trim().toUpperCase()]; // Trim and uppercase second part
+        return formattedParts.join(', '); // Join the parts back together with a comma
+    } else {
+        return parts[0].trim(); // If there's no second part, just return the first part
+    }
+};
 
   // The component returns a 'div' element.
   return (
