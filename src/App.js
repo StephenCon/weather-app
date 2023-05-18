@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchBar from './components/SearchBar/SearchBar';
 import FetchWeather from './components/FetchWeather/FetchWeather';
-import DefaultWeather from './components/DefaultWeatherHandler/DefaultWeatherHandler';
+import DefaultLocation from './components/DefaultLocationHandler/DefaultLocationHandler';
 import './App.css';
 import IconDisplay from './components/IconDisplay/IconDisplay';
 
@@ -33,9 +33,10 @@ class App extends React.Component {
           <SearchBar onSearch={this.handleSearch} />
           {/* FetchWeather displays the weather for the current city in the state */}
           <FetchWeather city={this.state.city} />
+          <IconDisplay city={this.state.city} />
         </div>
         {/* DefaultWeather determines the default location when the application starts */}
-        <DefaultWeather onLocationDetermined={this.handleLocationDetermined} />
+        <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />        
       </div>
     );
   }
