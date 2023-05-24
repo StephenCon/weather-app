@@ -4,7 +4,7 @@ import WeatherDisplay from "../WeatherDisplay/WeatherDisplay";
 import { fetchWeather } from "../../services/weatherservice";
 
 // Defining a class-based component, FetchWeather, that extends the base React Component class
-class FeathWeather extends React.Component {
+class FetchWeather extends React.Component {
   // Constructor method for the WeatherContainer component
   constructor(props) {
     super(props);
@@ -48,4 +48,4 @@ class FeathWeather extends React.Component {
 }
 
 // Exporting the WeatherContainer component so it can be imported and used in other components
-export default FeathWeather;
+export default FetchWeather;
