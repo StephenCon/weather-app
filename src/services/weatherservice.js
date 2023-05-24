@@ -3,8 +3,11 @@ const API_KEY = 'f023d6d413541c55d2f6cbcb018522e8'; // Replace with your API key
 
 // Function to fetch weather data for a given city
 export const fetchWeather = async (city) => {
+  // Encode the city name to handle special characters
+  const encodedCity = encodeURIComponent(city);
+
   // Construct the URL for the API request
-  const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=metric`;
+  const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=${encodedCity}&appid=${API_KEY}&units=metric`;
 
   // Make the fetch request to the API URL
   try {
