@@ -1,9 +1,0 @@
-.column-box {
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    margin: 10px;
-    height: 200px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #fff;
-}
