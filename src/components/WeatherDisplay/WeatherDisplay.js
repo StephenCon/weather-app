@@ -24,7 +24,7 @@ const WeatherDisplay = ({ city, temperature }) => {
     <div>
       {/* If 'city' is not null or undefined, render another 'div' element. */}
       {city && (
-        <div className="p-5">
+        <div className="d-flex justify-content-center align-items-center p-5">
           {/* Render an 'h3' element with the formatted city name. */}
           <h3>{formatCity(city)}:</h3>
           {/* Render an 'h1' element with the temperature. */}
