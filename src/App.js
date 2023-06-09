@@ -33,9 +33,9 @@ class App extends React.Component {
   // Rendering the application's main components
   render() {
     return (
-      <div className="">
-        <div className="">
-          <div className="">
+      <div className="App">
+        <div className="container">
+          <div className="row">
             {/* SearchBar allows users to search for a city, the 'onSearch' prop is set to the 'handleSearch' method */}
             <SearchBar onSearch={this.handleSearch} />
             {/* FetchWeather displays the weather for the current city in the state. The 'city' prop is set to the 'city' in the state */}
@@ -46,7 +46,7 @@ class App extends React.Component {
           {/* DefaultLocation determines the default location when the application starts. The 'onLocationDetermined' prop is set to the 'handleLocationDetermined' method */}
           <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
         </div>
-        <div className="">
+        <div className="row">
           <ForecastGrid />
         </div>
       </div>
