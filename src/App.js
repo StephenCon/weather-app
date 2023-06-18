@@ -36,22 +36,36 @@ class App extends React.Component {
       <div className="App">
         <div className="container p-4">
           <div className="row">
-            {/* SearchBar allows users to search for a city, the 'onSearch' prop is set to the 'handleSearch' method */}
-            <SearchBar onSearch={this.handleSearch} />
-            {/* FetchWeather displays the weather for the current city in the state. The 'city' prop is set to the 'city' in the state */}
-            <FetchWeather city={this.state.city} />
-            {/* IconDisplay displays the weather icon for the current city in the state. The 'city' prop is set to the 'city' in the state */}
-            <IconDisplay city={this.state.city} />
+            {/* SearchBar */}
+            <div className="col">
+              <SearchBar onSearch={this.handleSearch} />
+            </div>
+            {/* FetchWeather */}
+            <div>
+              <FetchWeather city={this.state.city} />
+            </div>
+            {/* IconDisplay */}
+            <div>
+              <IconDisplay city={this.state.city} />
+            </div>
           </div>
-          {/* DefaultLocation determines the default location when the application starts. The 'onLocationDetermined' prop is set to the 'handleLocationDetermined' method */}
-          <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
+          <div className="row">
+            <div className="col">
+              {/* DefaultLocation */}
+              <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
+            </div>
+          </div>
         </div>
         <div className="row">
-          <ForecastGrid />
+          <div className="col">
+            {/* ForecastGrid */}
+            <ForecastGrid />
+          </div>
         </div>
       </div>
     );
   }
+  
 }
 
 // Export the App component for use in other parts of your application
