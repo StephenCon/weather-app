@@ -34,7 +34,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="container">
+        <div className="container p-4">
           <div className="row">
             {/* SearchBar allows users to search for a city, the 'onSearch' prop is set to the 'handleSearch' method */}
             <SearchBar onSearch={this.handleSearch} />
