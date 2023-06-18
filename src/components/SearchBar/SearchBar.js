@@ -5,6 +5,7 @@ import PlacesAutocomplete, {
   getLatLng,
 } from "react-places-autocomplete";
 import "./SearchBar.css";
+import latinize from 'latinize';
 
 // Define a class component called SearchBar
 class SearchBar extends React.Component {
@@ -12,26 +13,30 @@ class SearchBar extends React.Component {
   constructor(props) {
     super(props);
     // Initialize the state with a term property set to an empty string
-    this.state = { term: "" };
+    this.state = { term: "", error: null };
   }
 
   // Define a method to handle changes in the input field
   // This method updates the state with the current input value
   handleChange = (term) => {
-    this.setState({ term });
+    this.setState({ term, error: null });
   };
 
-  // Define a method to handle the selection of an city from the autocomplete dropdown
+  // Define a method to handle the selection of a city from the autocomplete dropdown
   handleSelect = (term) => {
+    // Transliterate city name
+    const transliteratedCityName = latinize(term);
+    
     // Split the term by the "-" or "," character and take the first part
-    const cityName = term.split(/[-,]/)[0].trim();
+    const cityName = transliteratedCityName.split(/[-,]/)[0].trim();
+  
     // Geocode the selected city to get its coordinates
     geocodeByAddress(term)
-      .then((results) => getLatLng(results[0])) // Extract the latitude and longitude from the geocoding result
-      .then((latLng) => console.log("Success", latLng)) // Log the latitude and longitude to the console
-      .catch((error) => console.error("Error", error)); // Log any errors that occurred during geocoding
-
-    // Call the onSearch method passed as a prop to this component with the selected city
+        .then((results) => getLatLng(results[0])) // Extract the latitude and longitude from the geocoding result
+        .then((latLng) => console.log("Success", latLng)) // Log the latitude and longitude to the console
+        .catch((error) => console.error("Error", error)); // Log any errors that occurred during geocoding
+  
+    // Call the onSearch method passed as a prop to this component with the normalized city
     this.props.onSearch(cityName);
   };
 
@@ -45,11 +50,12 @@ class SearchBar extends React.Component {
     // Return the JSX to be rendered by the component
     return (
       <div className="SearchBar">
+        {this.state.error && <div className="error-message">{this.state.error}</div>}
         <div className="autocomplete-container">
           <PlacesAutocomplete
             value={this.state.term} // Set the value of the input field to the current term in the state
             onChange={this.handleChange} // Call the handleChange method when the input value changes
-            onSelect={this.handleSelect} // Call the handleSelect method when an city is selected from the dropdown
+            onSelect={this.handleSelect} // Call the handleSelect method when a city is selected from the dropdown
             searchOptions={searchOptions} // Apply the search options to the autocomplete
           >
             {/* Define a render prop function to customize the rendering of the autocomplete dropdown */}
@@ -105,3 +111,4 @@ class SearchBar extends React.Component {
 
 // Export the SearchBar component so it can be used in other files
 export default SearchBar;
+
