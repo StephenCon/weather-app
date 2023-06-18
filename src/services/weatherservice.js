@@ -1,22 +1,26 @@
 // Constant for the API key to be used in the fetch request
-const API_KEY = 'f023d6d413541c55d2f6cbcb018522e8'; // Replace with your API key
+const API_KEY = 'f023d6d413541c55d2f6cbcb018522e8'; // Replace with your actual API key
 
-// Function to fetch weather data for a given city
+// Asynchronous function to fetch weather data for a given city
 export const fetchWeather = async (city) => {
-  // Encode the city name to handle special characters
+  // Encode the city name to handle special characters in the URL
   const encodedCity = encodeURIComponent(city);
 
-  // Construct the URL for the API request
+  // Construct the URL for the API request using the encoded city name and API key
   const API_URL = `http://api.openweathermap.org/data/2.5/weather?q=${encodedCity}&appid=${API_KEY}&units=metric`;
 
-  // Make the fetch request to the API URL
+  // Try to make the fetch request to the API URL
   try {
     const response = await fetch(API_URL);
     // If the response is not ok (i.e., if the status is not a 2xx status), throw an error
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
+
+    // Parse the response as JSON
     const data = await response.json();
+
+    // Return the temperature and city name from the response data
     return {
       temperature: data.main.temp,
       city: data.name
