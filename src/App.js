@@ -52,7 +52,7 @@ class App extends React.Component {
             </div>
           </div>
         </div>
-        <div className="row">
+        <div className="row text-center">
           {/* ForecastGrid */}
           <ForecastGrid />
         </div>
