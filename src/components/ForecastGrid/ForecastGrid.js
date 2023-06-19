@@ -43,7 +43,7 @@ const ForecastGrid = () => {
                     Each column will display the name of one of the next seven days
                     Note: the key attribute is necessary when rendering a list in React */}
                 {nextSevenDays.map((day, index) => (
-                    <Col key={index} className="column-box text-center">{day}</Col>
+                    <Col key={index} className="shadow p-3 mb-5 bg-body rounded text-center">{day}</Col>
                 ))}
             </Row>
         </Container>
