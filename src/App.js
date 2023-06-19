@@ -33,8 +33,8 @@ class App extends React.Component {
   // Rendering the application's main components
   render() {
     return (
-      <div className="App">
-        <div className="container d-flex align-items-center justify-content-center vh-50">
+      <div className="App p-4">
+        <div className="container d-flex align-items-center justify-content-center p-4 mb-5 shadow rounded">
           <div className="row">
             {/* DefaultLocation */}
             <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
@@ -50,14 +50,12 @@ class App extends React.Component {
             <div className="text-center">
               <IconDisplay city={this.state.city} />
             </div>
-          </div>          
+          </div>
         </div>
         <div className="row">
-            <div className="col">
-              {/* ForecastGrid */}
-              <ForecastGrid />
-            </div>
-          </div>
+          {/* ForecastGrid */}
+          <ForecastGrid />
+        </div>
       </div>
     );
   }
