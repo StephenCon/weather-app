@@ -34,38 +34,33 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="container p-4">
+        <div className="container d-flex align-items-center justify-content-center vh-50">
           <div className="row">
+            {/* DefaultLocation */}
+            <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
             {/* SearchBar */}
             <div className="col">
               <SearchBar onSearch={this.handleSearch} />
             </div>
             {/* FetchWeather */}
-            <div>
+            <div className="text-center p-4">
               <FetchWeather city={this.state.city} />
             </div>
             {/* IconDisplay */}
-            <div>
+            <div className="text-center">
               <IconDisplay city={this.state.city} />
             </div>
-          </div>
-          <div className="row">
-            <div className="col">
-              {/* DefaultLocation */}
-              <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
-            </div>
-          </div>
+          </div>          
         </div>
         <div className="row">
-          <div className="col">
-            {/* ForecastGrid */}
-            <ForecastGrid />
+            <div className="col">
+              {/* ForecastGrid */}
+              <ForecastGrid />
+            </div>
           </div>
-        </div>
       </div>
     );
   }
-  
 }
 
 // Export the App component for use in other parts of your application
