@@ -6,7 +6,27 @@ body {
 }
 
 .container {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 20px;
+  max-width: 100%; /* Makes the container take the full width on mobile devices */
+  padding: 15px; /* Adds some padding to prevent content from sticking to the edges */
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+  .container {
+    max-width: 750px; /* Restricts the container width to 750px */
+  }
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+  .container {
+    max-width: 970px; /* Restricts the container width to 970px */
+  }
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1170px; /* Restricts the container width to 1170px */
+  }
 }
