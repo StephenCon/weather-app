@@ -39,11 +39,8 @@ const ForecastGrid = () => {
         // Create a container using the Container component from react-bootstrap
         <Container>
             <Row>
-                {/* Map over the nextSevenDays array to create a column for each day
-                    Each column will display the name of one of the next seven days
-                    Note: the key attribute is necessary when rendering a list in React */}
                 {nextSevenDays.map((day, index) => (
-                    <Col key={index} className="shadow p-3 mb-5 bg-body rounded text-center">{day}</Col>
+                    <Col key={index} className="shadow p-3 m-2 rounded">{day}</Col>
                 ))}
             </Row>
         </Container>
