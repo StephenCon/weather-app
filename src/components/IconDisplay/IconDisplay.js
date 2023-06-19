@@ -56,7 +56,7 @@ function IconDisplay({ city }) {
     weather && (
       <img
         className="weather-icon"
-        src={`http://openweathermap.org/img/wn/${weather}.png`}
+        src={`http://openweathermap.org/img/wn/${weather}@2x.png`}
         alt="Weather Icon"
       />
     )
