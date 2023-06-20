@@ -5,6 +5,7 @@ import FetchWeather from "./components/FetchWeather/FetchWeather";
 import DefaultLocation from "./components/DefaultLocationHandler/DefaultLocationHandler";
 import IconDisplay from "./components/IconDisplay/IconDisplay";
 import ForecastGrid from "./components/ForecastGrid/ForecastGrid";
+import NavigationBar from "./components/NavigationBar/NavigationBar";
 import "./App.css";
 
 // Main Application component
@@ -35,24 +36,32 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="container">
-          <div className="row justify-content-center">
-            <div className="maincard d-flex flex-column justify-content-center align-items-center text-center shadow p-4 m-4">
+          <NavigationBar />
+          <div className="row">
+            <div className="maincard d-flex flex-column justify-content-center align-items-center text-center shadow p-4">
+
+
               <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
               <SearchBar onSearch={this.handleSearch} />
               <FetchWeather city={this.state.city} />
               <IconDisplay city={this.state.city} />
+
+
             </div>
           </div>
-          <div className="row justify-content-center">
-            <div className="forecast-grid d-flex flex-column justify-content-center align-items-center text-center">
+          <div className="row p-4">
+
+            <div className="forecast-grid d-flex flex-column text-center">
+
               <ForecastGrid />
+
             </div>
           </div>
         </div>
       </div>
     );
   }
-  
+
 }
 
 // Export the App component for use in other parts of your application
