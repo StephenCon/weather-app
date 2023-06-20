@@ -44,7 +44,7 @@ class App extends React.Component {
             </div>
           </div>
           <div className="row justify-content-center">
-            <div className="forecast-grid col d-flex flex-column justify-content-center align-items-center text-center">
+            <div className="forecast-grid d-flex flex-column justify-content-center align-items-center text-center">
               <ForecastGrid />
             </div>
           </div>
