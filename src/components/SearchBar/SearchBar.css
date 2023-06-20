@@ -1,3 +1,7 @@
+.SearchBar {
+  position: relative;
+}
+
 .autocomplete-dropdown-container {
   position: absolute;
   top: 40px; 
@@ -8,3 +12,5 @@
   max-height: 180px;
   background-color: white;
 }
+
+
