@@ -33,28 +33,21 @@ class App extends React.Component {
   // Rendering the application's main components
   render() {
     return (
-      <div className="App p-4">
-        <div className="container d-flex align-items-center justify-content-center p-4 shadow rounded">
+      <div className="App">
+        <div className="container">
           <div className="row">
-            {/* DefaultLocation */}
-            <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
-            {/* SearchBar */}
-            <div className="col">
+            <div className="maincard col d-flex flex-column justify-content-center align-items-center">
+              <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
               <SearchBar onSearch={this.handleSearch} />
-            </div>
-            {/* FetchWeather */}
-            <div className="text-center p-4">
               <FetchWeather city={this.state.city} />
-            </div>
-            {/* IconDisplay */}
-            <div className="text-center">
               <IconDisplay city={this.state.city} />
             </div>
           </div>
-        </div>
-        <div className="row text-center">
-          {/* ForecastGrid */}
-          <ForecastGrid />
+          <div className="row">
+            <div className="forecast-grid col">
+              <ForecastGrid />
+            </div>
+          </div>
         </div>
       </div>
     );
