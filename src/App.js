@@ -35,16 +35,16 @@ class App extends React.Component {
     return (
       <div className="App">
         <div className="container">
-          <div className="row">
-            <div className="maincard col d-flex flex-column justify-content-center align-items-center">
+          <div className="row justify-content-center">
+            <div className="maincard d-flex flex-column justify-content-center align-items-center text-center shadow p-4 m-4">
               <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
               <SearchBar onSearch={this.handleSearch} />
               <FetchWeather city={this.state.city} />
               <IconDisplay city={this.state.city} />
             </div>
           </div>
-          <div className="row">
-            <div className="forecast-grid col">
+          <div className="row justify-content-center">
+            <div className="forecast-grid col d-flex flex-column justify-content-center align-items-center text-center">
               <ForecastGrid />
             </div>
           </div>
@@ -52,6 +52,7 @@ class App extends React.Component {
       </div>
     );
   }
+  
 }
 
 // Export the App component for use in other parts of your application
