@@ -35,10 +35,10 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <div className="container">
+        <div className="container-fluid">
           <NavigationBar />
-          <div className="row p-4">
-            <div className="maincard d-flex flex-column justify-content-center align-items-center text-center shadow p-4">
+          <div className="row">
+            <div className="maincard d-flex flex-column justify-content-center align-items-center text-center shadow">
               {/* Component that handles default location determination */}
               <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
               {/* Component for searching a city */}
@@ -49,8 +49,8 @@ class App extends React.Component {
               <IconDisplay city={this.state.city} />
             </div>
           </div>
-          <div className="row p-4">
-            <div className="forecast-grid d-flex flex-column text-center">
+          <div className="row">
+            <div className="d-flex flex-column text-center">
               {/* Component that displays forecast grid */}
               <ForecastGrid />
             </div>

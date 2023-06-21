@@ -47,7 +47,7 @@ const ForecastGrid = () => {
                     // For each day in the next seven days, create a new Col component
                     // Each Col component is given a unique key (its index), and some CSS classes for styling
                     // Inside each Col component, the name of the day is displayed
-                    <Col key={index} className="shadow rounded">{day}</Col>
+                    <Col key={index} className="forecast-boxes shadow rounded">{day}</Col>
                 ))}
             </Row>
 

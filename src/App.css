@@ -4,12 +4,14 @@
   background-color: #EEEEEE;
 }
 
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+
+
 .maincard {
   width: 40% !important;
   margin: auto;
-  background-color: white;
-}
-
-.forecast-grid {
   background-color: white;
 }
