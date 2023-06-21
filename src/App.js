@@ -37,31 +37,28 @@ class App extends React.Component {
       <div className="App">
         <div className="container">
           <NavigationBar />
-          <div className="row">
+          <div className="row p-4">
             <div className="maincard d-flex flex-column justify-content-center align-items-center text-center shadow p-4">
-
-
+              {/* Component that handles default location determination */}
               <DefaultLocation onLocationDetermined={this.handleLocationDetermined} />
+              {/* Component for searching a city */}
               <SearchBar onSearch={this.handleSearch} />
+              {/* Component that fetches weather data */}
               <FetchWeather city={this.state.city} />
+              {/* Component that displays weather icons */}
               <IconDisplay city={this.state.city} />
-
-
             </div>
           </div>
           <div className="row p-4">
-
             <div className="forecast-grid d-flex flex-column text-center">
-
+              {/* Component that displays forecast grid */}
               <ForecastGrid />
-
             </div>
           </div>
         </div>
       </div>
     );
   }
-
 }
 
 // Export the App component for use in other parts of your application
