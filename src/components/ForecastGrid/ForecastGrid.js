@@ -15,14 +15,14 @@ const ForecastGrid = () => {
     // Use getDay method to get the current day of the week as a number (0-6, where 0 is Sunday)
     const today = date.getDay();
 
-    // Define a function to calculate the next seven days
-    const getNextSevenDays = () => {
+    // Define a function to calculate the next five days
+    const getNextFiveDays = () => {
 
-        // Initialize an empty array to store the names of the next seven days
+        // Initialize an empty array to store the names of the next five days
         let nextDays = [];
 
-        // Loop from 1 to 7 (inclusive)
-        for (let i = 1; i <= 7; i++) {
+        // Loop from 1 to 5 (inclusive)
+        for (let i = 1; i <= 5; i++) {
 
             // Calculate the index of the next day by adding i to today and taking the modulus 7
             // This ensures that the index wraps around to 0 (Sunday) after 6 (Saturday)
@@ -30,27 +30,25 @@ const ForecastGrid = () => {
             nextDays.push(days[(today + i) % 7]);
         }
 
-        // Return the array of the next seven days
+        // Return the array of the next five days
         return nextDays;
     }
 
-    // Call the function to get the next seven days
-    const nextSevenDays = getNextSevenDays();
+    // Call the function to get the next five days
+    const nextFiveDays = getNextFiveDays();
 
     // Render the ForecastGrid component
     return (
         // Create a container using the Container component from react-bootstrap
         <Container>
-
             <Row>
-                {nextSevenDays.map((day, index) => (
-                    // For each day in the next seven days, create a new Col component
+                {nextFiveDays.map((day, index) => (
+                    // For each day in the next five days, create a new Col component
                     // Each Col component is given a unique key (its index), and some CSS classes for styling
                     // Inside each Col component, the name of the day is displayed
-                    <Col key={index} className="forecast-boxes shadow rounded">{day}</Col>
+                    <Col key={index} className="forecast-boxes shadow rounded p-4 m-4">{day}</Col>
                 ))}
             </Row>
-
         </Container>
     );
 };
