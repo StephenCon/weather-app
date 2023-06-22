@@ -2,7 +2,7 @@
 import "./App.css";
 import React from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
-import FetchWeather from "./components/FetchWeather/FetchWeather";
+import CityDisplay from "./components/CityDisplay/CityDisplay";
 import DefaultLocation from "./components/DefaultLocationHandler/DefaultLocationHandler";
 import FetchWeatherIcon from "./components/FetchWeatherIcon/FetchWeatherIcon";
 import ForecastGrid from "./components/ForecastGrid/ForecastGrid";
@@ -45,7 +45,7 @@ class App extends React.Component {
               {/* Component for searching a city */}
               <SearchBar onSearch={this.handleSearch} />
               {/* Component that fetches weather data */}
-              <FetchWeather city={this.state.city} />
+              <CityDisplay city={this.state.city} />
               {/* Component that fetches and displays weather icons */}
               <FetchWeatherIcon city={this.state.city} />
             </div>
