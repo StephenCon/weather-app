@@ -6,6 +6,7 @@ import DefaultLocation from "./components/DefaultLocationHandler/DefaultLocation
 import IconDisplay from "./components/IconDisplay/IconDisplay";
 import ForecastGrid from "./components/ForecastGrid/ForecastGrid";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
+import Footer from "./components/Footer/Footer";
 import "./App.css";
 
 // Main Application component
@@ -55,6 +56,7 @@ class App extends React.Component {
               <ForecastGrid />
             </div>
           </div>
+          <Footer />
         </div>
       </div>
     );
