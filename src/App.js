@@ -1,13 +1,13 @@
 // Import necessary modules and components
+import "./App.css";
 import React from "react";
 import SearchBar from "./components/SearchBar/SearchBar";
 import FetchWeather from "./components/FetchWeather/FetchWeather";
 import DefaultLocation from "./components/DefaultLocationHandler/DefaultLocationHandler";
-import IconDisplay from "./components/IconDisplay/IconDisplay";
+import FetchWeatherIcon from "./components/FetchWeatherIcon/FetchWeatherIcon";
 import ForecastGrid from "./components/ForecastGrid/ForecastGrid";
 import NavigationBar from "./components/NavigationBar/NavigationBar";
 import Footer from "./components/Footer/Footer";
-import "./App.css";
 
 // Main Application component
 class App extends React.Component {
@@ -46,8 +46,8 @@ class App extends React.Component {
               <SearchBar onSearch={this.handleSearch} />
               {/* Component that fetches weather data */}
               <FetchWeather city={this.state.city} />
-              {/* Component that displays weather icons */}
-              <IconDisplay city={this.state.city} />
+              {/* Component that fetches and displays weather icons */}
+              <FetchWeatherIcon city={this.state.city} />
             </div>
           </div>
           <div className="row">
