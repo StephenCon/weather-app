@@ -1,26 +1,25 @@
-# Weather App
+Weather App
 
-Weather App is a simple, easy-to-use web application that allows users to type in a city and receive current weather information.
+This is a simple weather application built as part of the 100 Days of Code challenge. It uses JavaScript to fetch and display weather data from a weather API.
+Features
 
-## Installation
+    Fetch and display weather data based on user's location
+    Show current temperature, humidity, wind speed, and weather conditions
+    Display weather forecast for the next few days
 
-Before you start using the Weather App, you need to make sure you have [Node.js](https://nodejs.org) and [npm](https://www.npmjs.com/) installed on your machine. You can verify this by running `node -v` and `npm -v` in your terminal/command prompt.
+Installation
 
-To search for a city's weather, type the city name in the search bar and hit Enter. The weather information for that city will be displayed.
+    Clone the repository: git clone https://github.com/StephenCon/weather-app.git
+    Navigate to the project directory: cd weather-app
+    Install the dependencies: npm install
+    Start the application: npm start
+
+Usage
+
+Once the application is running, you can enter your location to get the current weather information.
 Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the issues page for open issues or create a new one.
-Author
-
-    Stephen Connett - Initial work - Stephen Connett
-
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 License
 
 This project is licensed under the GNU General Public License v3.0 - see the LICENSE file for details.
-
-python
-
-
-Remember to replace `https://github.com/yourusername/WeatherApp.git` and `https://github.com/yourusername` with the actual links to your GitHub repository.
-
-Please let me know if there are any other details you'd like to include or changes you'd like me to make.
