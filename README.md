@@ -4,8 +4,7 @@ This is a simple weather application built as part of the 100 Days of Code chall
 Features
 
     Fetch and display weather data based on user's location
-    Show current temperature, humidity, wind speed, and weather conditions
-    Display weather forecast for the next few days
+    Display weather forecast for the next five days
 
 Installation
 
