@@ -1,57 +1,45 @@
-// Import necessary modules
-import React from 'react';  // Import React library for building user interfaces
-import { Container, Row, Col } from 'react-bootstrap';  // Import necessary components from react-bootstrap library for layout
-import './ForecastGrid.css';  // Importing external CSS file
+import React, { useEffect, useState } from 'react';
+import { Container, Row, Col } from 'react-bootstrap';
+import { fetchForecast } from '../../services/weatherservice';
+import './ForecastGrid.css';
 
-// Define ForecastGrid as a functional component
-const ForecastGrid = () => {
-
-    // Define an array of days of the week
+const ForecastGrid = ({ city }) => {
     const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    const [forecast, setForecast] = useState([]);
 
-    // Create a new Date object to get the current date
-    const date = new Date();
-
-    // Use getDay method to get the current day of the week as a number (0-6, where 0 is Sunday)
-    const today = date.getDay();
-
-    // Define a function to calculate the next five days
-    const getNextFiveDays = () => {
-
-        // Initialize an empty array to store the names of the next five days
-        let nextDays = [];
-
-        // Loop from 1 to 5 (inclusive)
-        for (let i = 1; i <= 5; i++) {
-
-            // Calculate the index of the next day by adding i to today and taking the modulus 7
-            // This ensures that the index wraps around to 0 (Sunday) after 6 (Saturday)
-            // Then push the name of the next day to the nextDays array
-            nextDays.push(days[(today + i) % 7]);
+    useEffect(() => {
+        if (city) {
+            fetchForecast(city)
+                .then(forecastData => {
+                    setForecast(forecastData);
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
         }
+    }, [city]);
 
-        // Return the array of the next five days
-        return nextDays;
-    }
-
-    // Call the function to get the next five days
-    const nextFiveDays = getNextFiveDays();
-
-    // Render the ForecastGrid component
     return (
-        // Create a container using the Container component from react-bootstrap
         <Container>
             <Row>
-                {nextFiveDays.map((day, index) => (
-                    // For each day in the next five days, create a new Col component
-                    // Each Col component is given a unique key (its index), and some CSS classes for styling
-                    // Inside each Col component, the name of the day is displayed
-                    <Col key={index} className="forecast-boxes shadow rounded p-4 m-4">{day}</Col>
-                ))}
+                {forecast.map((dayForecast, index) => {
+                    // Create a new Date object from the date string
+                    const date = new Date(dayForecast.date);
+
+                    // Use getDay() to get the day of the week as a number, and map it to a name
+                    const dayName = days[date.getDay()];
+
+                    return (
+                        <Col key={index} className="forecast-boxes shadow rounded p-4 m-4">
+                            <p>{dayName}</p>
+                            <p>Temperature: {dayForecast.temperature}°C</p>
+                            <p>Weather: {dayForecast.weather}</p>
+                        </Col>
+                    );
+                })}
             </Row>
         </Container>
     );
 };
 
-// Export the ForecastGrid component to be used in other files
 export default ForecastGrid;

@@ -53,7 +53,7 @@ class App extends React.Component {
           <div className="row">
             <div className="d-flex flex-column text-center">
               {/* Component that displays forecast grid */}
-              <ForecastGrid />
+              <ForecastGrid city={this.state.city} />
             </div>
           </div>
           <Footer />
