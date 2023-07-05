@@ -11,7 +11,7 @@ export const fetchWeather = async (city) => {
     }
     const data = await response.json();
     return {
-      temperature: data.main.temp,
+      temperature: Math.floor(data.main.temp),
       city: data.name,
     };
   } catch (error) {
@@ -43,7 +43,7 @@ export const fetchForecast = async (city) => {
       // We'll just keep the date, temperature and weather icon for each day
       dailyForecasts.push({
         date: forecast.dt_txt.split(' ')[0], // The date is the first part of the dt_txt field
-        temperature: forecast.main.temp,
+        temperature: Math.floor(forecast.main.temp),
         icon: forecast.weather[0].icon,
       });
     }
