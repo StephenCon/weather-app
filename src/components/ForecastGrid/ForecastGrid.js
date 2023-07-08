@@ -45,9 +45,8 @@ const ForecastGrid = ({ city }) => {
                     return (
                         <Col key={index} className="forecast-boxes shadow rounded p-4 m-4">
                             <p>{dayName}</p>
+                            <p>Temperature: {dayForecast.temperature}°C</p> 
                             <DisplayWeatherIcon weather={dayForecast.icon} />
-                            <p>Temperature: {dayForecast.temperature}°C</p>
-                            <p>Weather: {dayForecast.weather}</p>
                         </Col>
                     );
                 })}
