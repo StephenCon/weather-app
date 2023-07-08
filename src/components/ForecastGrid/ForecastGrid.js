@@ -11,7 +11,16 @@ const ForecastGrid = ({ city }) => {
         if (city) {
             fetchForecast(city)
                 .then(forecastData => {
-                    setForecast(forecastData);
+                    // Process dates and filter out today's forecast, keep next 5 days only
+                    const today = new Date();
+                    today.setHours(0, 0, 0, 0);  // Normalize to mid-night today
+
+                    const nextFiveDaysForecast = forecastData
+                        .map(item => ({ ...item, date: new Date(item.date) }))  // Ensure dates are Date objects
+                        .filter(item => item.date.getTime() > today.getTime())  // Filter out today's data
+                        .slice(0, 5);  // Keep next 5 days only
+
+                    setForecast(nextFiveDaysForecast);
                 })
                 .catch(error => {
                     console.error('Error:', error);
