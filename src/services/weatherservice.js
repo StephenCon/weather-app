@@ -11,7 +11,7 @@ export const fetchWeather = async (city) => {
     }
     const data = await response.json();
     return {
-      temperature: Math.floor(data.main.temp),
+      temperature: parseFloat(data.main.temp).toFixed(1), // format temperature
       city: data.name,
     };
   } catch (error) {
@@ -31,19 +31,14 @@ export const fetchForecast = async (city) => {
     }
     const data = await response.json();
 
-    // The forecast data is in the 'list' field of the response
     const forecastList = data.list;
-
-    // We'll store the daily forecasts in this array
     const dailyForecasts = [];
 
-    // Loop over each forecast in the list
-    for (let i = 0; i < forecastList.length; i += 8) { // Increment by 8 because there are 8 timestamps per day
+    for (let i = 0; i < forecastList.length; i += 8) {
       const forecast = forecastList[i];
-      // We'll just keep the date, temperature and weather icon for each day
       dailyForecasts.push({
-        date: forecast.dt_txt.split(' ')[0], // The date is the first part of the dt_txt field
-        temperature: Math.floor(forecast.main.temp),
+        date: forecast.dt_txt.split(' ')[0],
+        temperature: parseFloat(forecast.main.temp).toFixed(1), // format temperature
         icon: forecast.weather[0].icon,
       });
     }
