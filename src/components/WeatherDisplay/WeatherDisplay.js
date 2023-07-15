@@ -12,8 +12,6 @@ const WeatherDisplay = ({ city, temperature }) => {
     const parts = str.split(","); // Split on comma
     if (parts[1]) {
       // Check if the second part exists
-
-      //Hello James how are you?
       const formattedParts = [parts[0].trim(), parts[1].trim().toUpperCase()]; // Trim and uppercase second part
       return formattedParts.join(", "); // Join the parts back together with a comma
     } else {
