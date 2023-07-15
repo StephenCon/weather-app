@@ -1,6 +1,8 @@
 // Import the React library.
 import React from "react";
 
+//Stephen is so cool
+
 // The WeatherDisplay functional component.
 // This component takes in two props: 'city' and 'temperature'.
 const WeatherDisplay = ({ city, temperature }) => {
